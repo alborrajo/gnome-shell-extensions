@@ -15,6 +15,8 @@ const N_ = x => x;
 const Me = ExtensionUtils.getCurrentExtension();
 const PlaceDisplay = Me.imports.placeDisplay;
 
+const Gio = imports.gi.Gio;
+
 const PLACE_ICON_SIZE = 16;
 
 var PlaceMenuItem = GObject.registerClass(
@@ -88,12 +90,24 @@ class PlacesMenu extends PanelMenu.Button {
     _init() {
         super._init(0.0, _('Places'));
 
-        let label = new St.Label({
+        let layout = new St.BoxLayout({
+            vertical: false
+        })
+        this.add_actor(layout);
+
+        this.icon = new St.Icon({
+            icon_name : 'folder',
+            //gicon : Gio.icon_new_for_string( Me.dir.get_path() + '/icons/compass-regular.svg' ),
+            style_class : 'system-status-icon',
+        });
+        layout.add_actor(this.icon);
+
+        this.label = new St.Label({
             text: _('Places'),
             y_expand: true,
             y_align: Clutter.ActorAlign.CENTER,
         });
-        this.add_actor(label);
+        layout.add_actor(this.label);
 
         this.placesManager = new PlaceDisplay.PlacesManager();
 
@@ -135,6 +149,8 @@ class PlacesMenu extends PanelMenu.Button {
 
 function init() {
     ExtensionUtils.initTranslations();
+
+    this.settings = ExtensionUtils.getSettings('org.gnome.shell.extensions.places-menu');
 }
 
 let _indicator;
@@ -146,6 +162,34 @@ function enable() {
     if ('apps-menu' in Main.panel.statusArea)
         pos++;
     Main.panel.addToStatusArea('places-menu', _indicator, pos, 'left');
+
+    this.settings.bind(
+        'show-icon',
+        this._indicator.icon,
+        'visible',
+        Gio.SettingsBindFlags.DEFAULT
+    );
+
+    this.settings.bind(
+        'icon-path',
+        this._indicator.icon,
+        'icon_name',
+        Gio.SettingsBindFlags.DEFAULT
+    )
+
+    this.settings.bind(
+        'show-label',
+        this._indicator.label,
+        'visible',
+        Gio.SettingsBindFlags.DEFAULT
+    )
+
+    this.settings.bind(
+        'label-text',
+        this._indicator.label,
+        'text',
+        Gio.SettingsBindFlags.DEFAULT
+    )
 }
 
 function disable() {

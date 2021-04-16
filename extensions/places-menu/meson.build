@@ -4,4 +4,5 @@ extension_data += configure_file(
   configuration: metadata_conf
 )
 
-extension_sources += files('placeDisplay.js')
+extension_sources += files('prefs.js', 'placeDisplay.js')
+extension_schemas += files(metadata_conf.get('gschemaname') + '.gschema.xml')

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="org.gnome.shell.extensions.places-menu" path="/org/gnome/shell/extensions/places-menu/">
+        <!-- See also: https://developer.gnome.org/glib/stable/gvariant-format-strings.html -->
+        <key name="show-icon" type="b">
+            <default>false</default>
+        </key>
+        <key name="icon-path" type="s">
+            <default>''</default>
+        </key>
+
+        <key name="show-label" type="b">
+            <default>true</default>
+        </key>
+        <key name="label-text" type="s">
+            <default>'Places'</default>
+        </key>
+    </schema>
+</schemalist>
