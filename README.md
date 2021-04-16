@@ -13,6 +13,14 @@ as well as some general information about [GNOME Shell][shell-page].
 
 Bugs should be reported to the GNOME [bug tracking system][bug-tracker].
 
+## This fork adds the following
+
+ * places-menu
+ 
+     Adds a custom icon and label to the Places menu
+     
+     ![places custom label](https://user-images.githubusercontent.com/38296782/115037360-ad20ed80-9ece-11eb-9c91-9416ed3fa9df.png)
+
 ## Extensions
 
  * alternate-tab (**OBSOLETE**)
