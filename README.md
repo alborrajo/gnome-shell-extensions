@@ -19,7 +19,7 @@ Bugs should be reported to the GNOME [bug tracking system][bug-tracker].
  
      Adds a custom icon and label to the Places menu
      
-     ![places custom label](https://user-images.githubusercontent.com/38296782/115037360-ad20ed80-9ece-11eb-9c91-9416ed3fa9df.png)
+     ![places custom label](https://user-images.githubusercontent.com/38296782/115126231-d6747300-9fcd-11eb-97e2-a0146416aa82.png)
 
 ## Extensions
 
